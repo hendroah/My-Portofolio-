@@ -41,15 +41,24 @@
         .animation-delay-2000 { animation-delay: 2s; }
         .animation-delay-4000 { animation-delay: 4s; }
 
-        /* Scroll Reveal Initial State */
+        /* Scroll Reveal Initial State - Diperbaiki agar lebih aman */
         .reveal {
             opacity: 0;
-            transform: translateY(64px);
-            transition: all 1000ms ease-out;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
         }
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        /* Animasi khusus untuk elemen saat halaman pertama dibuka */
+        @keyframes fade-in-up {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-startup {
+            animation: fade-in-up 1s ease-out forwards;
         }
 
         /* Background grid pattern */
@@ -71,12 +80,12 @@
 
     <div class="relative z-10">
         <!-- HEADER / NAVBAR -->
-        <nav class="sticky top-0 z-40 bg-[#08080c]/70 backdrop-blur-md border-b border-white/5">
+        <nav class="sticky top-0 z-40 bg-[#08080c]/70 backdrop-blur-md border-b border-white/5 animate-startup">
             <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-                <div class="reveal text-2xl font-black tracking-tighter bg-gradient-to-r from-white via-indigo-200 to-indigo-500 bg-clip-text text-transparent">
+                <div class="text-2xl font-black tracking-tighter bg-gradient-to-r from-white via-indigo-200 to-indigo-500 bg-clip-text text-transparent">
                     Hend
                 </div>
-                <div class="reveal flex gap-6" style="transition-delay: 200ms;">
+                <div class="flex gap-6">
                     <a href="#about" class="text-sm font-medium text-neutral-400 hover:text-white transition-colors">About</a>
                     <a href="#portfolio" class="text-sm font-medium text-neutral-400 hover:text-white transition-colors">Portfolio</a>
                     <a href="#contact" class="text-sm font-medium text-neutral-400 hover:text-white transition-colors">Contact</a>
@@ -85,23 +94,23 @@
         </nav>
 
         <!-- HERO SECTION -->
-        <section id="about" class="max-w-6xl mx-auto px-6 py-20 md:py-32 flex flex-col-reverse md:flex-row items-center justify-between gap-12">
+        <section id="about" class="max-w-6xl mx-auto px-6 py-20 md:py-32 flex flex-col-reverse md:flex-row items-center justify-between gap-12 animate-startup" style="animation-delay: 0.2s; opacity: 0;">
             <div class="flex-1 space-y-6 text-center md:text-left">
-                <div class="reveal inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/10 text-indigo-300 text-sm font-medium border border-indigo-500/20 backdrop-blur-sm" style="transition-delay: 100ms;">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/10 text-indigo-300 text-sm font-medium border border-indigo-500/20 backdrop-blur-sm">
                     <span class="w-2 h-2 rounded-full bg-indigo-500 animate-pulse shadow-[0_0_10px_rgba(99,102,241,0.8)]"></span>
                     Building & Exploring Web3
                 </div>
                 
-                <h1 class="reveal text-5xl md:text-7xl font-bold tracking-tight leading-tight text-white drop-shadow-lg" style="transition-delay: 300ms;">
+                <h1 class="text-5xl md:text-7xl font-bold tracking-tight leading-tight text-white drop-shadow-lg">
                     Art, Research <br/>
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">& Trading.</span>
                 </h1>
                 
-                <p class="reveal text-lg text-neutral-300 max-w-xl mx-auto md:mx-0 leading-relaxed" style="transition-delay: 500ms;">
+                <p class="text-lg text-neutral-300 max-w-xl mx-auto md:mx-0 leading-relaxed">
                     I am Hend. A dedicated Web3 Contributor, Artist, and Trader. Bridging the gap between creative vision and decentralized technology.
                 </p>
 
-                <div class="reveal flex flex-wrap justify-center md:justify-start gap-4 pt-4" style="transition-delay: 700ms;">
+                <div class="flex flex-wrap justify-center md:justify-start gap-4 pt-4">
                     <a href="#portfolio" class="bg-white text-black px-8 py-3.5 rounded-xl font-bold hover:bg-indigo-50 hover:scale-105 transition-all shadow-[0_0_20px_rgba(255,255,255,0.2)]">
                         View My Work
                     </a>
@@ -111,7 +120,7 @@
                 </div>
             </div>
             
-            <div class="reveal relative" style="transition-delay: 400ms;">
+            <div class="relative">
                 <div class="absolute inset-0 bg-indigo-500/30 blur-[80px] rounded-full"></div>
                 <img 
                     src="https://raw.githubusercontent.com/hendroah/My-Portofolio-/711a431b540e3dfa8b5721b9523d4dfafa2f0c0a/IMG-20260602-WA0080.jpg" 
@@ -121,12 +130,12 @@
             </div>
         </section>
 
-        <!-- EXPERIENCE / ROLES SECTION -->
+        <!-- EXPERIENCE / ROLES SECTION (Animasi scroll dimulai dari sini) -->
         <section class="border-y border-white/5 bg-black/40 backdrop-blur-sm relative overflow-hidden">
             <div class="max-w-6xl mx-auto px-6 py-24 relative z-10">
                 <div class="grid md:grid-cols-3 gap-8">
                     <!-- WEB3 CARD -->
-                    <div class="reveal h-full bg-white/5 border border-white/10 p-8 rounded-3xl hover:border-indigo-500/50 hover:bg-white/[0.07] transition-all group backdrop-blur-md" style="transition-delay: 0ms;">
+                    <div class="reveal h-full bg-white/5 border border-white/10 p-8 rounded-3xl hover:border-indigo-500/50 hover:bg-white/[0.07] transition-all group backdrop-blur-md">
                         <i data-lucide="monitor-play" class="w-12 h-12 text-indigo-400 mb-6 group-hover:scale-110 transition-transform"></i>
                         <h3 class="text-2xl font-bold mb-4">Web3</h3>
                         <ul class="space-y-4">
@@ -143,7 +152,7 @@
                     </div>
 
                     <!-- ARTIST CARD -->
-                    <div class="reveal h-full bg-white/5 border border-white/10 p-8 rounded-3xl hover:border-pink-500/50 hover:bg-white/[0.07] transition-all group backdrop-blur-md" style="transition-delay: 200ms;">
+                    <div class="reveal h-full bg-white/5 border border-white/10 p-8 rounded-3xl hover:border-pink-500/50 hover:bg-white/[0.07] transition-all group backdrop-blur-md" style="transition-delay: 100ms;">
                         <i data-lucide="palette" class="w-12 h-12 text-pink-400 mb-6 group-hover:scale-110 transition-transform"></i>
                         <h3 class="text-2xl font-bold mb-4">Artist</h3>
                         <ul class="space-y-3">
@@ -155,7 +164,7 @@
                     </div>
 
                     <!-- TRADE CARD -->
-                    <div class="reveal h-full bg-white/5 border border-white/10 p-8 rounded-3xl hover:border-emerald-500/50 hover:bg-white/[0.07] transition-all group backdrop-blur-md" style="transition-delay: 400ms;">
+                    <div class="reveal h-full bg-white/5 border border-white/10 p-8 rounded-3xl hover:border-emerald-500/50 hover:bg-white/[0.07] transition-all group backdrop-blur-md" style="transition-delay: 200ms;">
                         <i data-lucide="trending-up" class="w-12 h-12 text-emerald-400 mb-6 group-hover:scale-110 transition-transform"></i>
                         <h3 class="text-2xl font-bold mb-4">Trade</h3>
                         <p class="text-neutral-400 mb-6 leading-relaxed">Active market participant focusing on high-liquidity assets and technical analysis.</p>
@@ -201,26 +210,26 @@
                 </div>
 
                 <div class="flex flex-wrap justify-center gap-4 mb-20">
-                    <a href="https://x.com/Hendroabdh" target="_blank" class="reveal flex items-center gap-3 px-8 py-5 bg-white/5 border border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/30 transition-all group backdrop-blur-md hover:-translate-y-1" style="transition-delay: 100ms;">
+                    <a href="https://x.com/Hendroabdh" target="_blank" class="reveal flex items-center gap-3 px-8 py-5 bg-white/5 border border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/30 transition-all group backdrop-blur-md hover:-translate-y-1" style="transition-delay: 50ms;">
                         <i data-lucide="twitter" class="w-6 h-6 text-neutral-400 group-hover:text-white transition-colors"></i>
                         <span class="font-bold">Twitter / X</span>
                         <i data-lucide="external-link" class="w-4 h-4 text-neutral-600 ml-1"></i>
                     </a>
                     
-                    <a href="https://discord.com/users/551796569935052830" target="_blank" class="reveal flex items-center gap-3 px-8 py-5 bg-white/5 border border-white/10 rounded-2xl hover:bg-[#5865F2]/10 hover:border-[#5865F2]/50 transition-all group backdrop-blur-md hover:-translate-y-1" style="transition-delay: 200ms;">
+                    <a href="https://discord.com/users/551796569935052830" target="_blank" class="reveal flex items-center gap-3 px-8 py-5 bg-white/5 border border-white/10 rounded-2xl hover:bg-[#5865F2]/10 hover:border-[#5865F2]/50 transition-all group backdrop-blur-md hover:-translate-y-1" style="transition-delay: 100ms;">
                         <!-- Custom Discord SVG -->
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 127.14 96.36" class="text-neutral-400 group-hover:text-[#5865F2] transition-colors"><path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.31,60,73.31,53s5-12.74,11.43-12.74S96.2,46,96.12,53,91.08,65.69,84.69,65.69Z"/></svg>
                         <span class="font-bold">Discord</span>
                         <i data-lucide="external-link" class="w-4 h-4 text-neutral-600 ml-1"></i>
                     </a>
 
-                    <a href="https://t.me/hend199" target="_blank" class="reveal flex items-center gap-3 px-8 py-5 bg-white/5 border border-white/10 rounded-2xl hover:bg-[#229ED9]/10 hover:border-[#229ED9]/50 transition-all group backdrop-blur-md hover:-translate-y-1" style="transition-delay: 300ms;">
+                    <a href="https://t.me/hend199" target="_blank" class="reveal flex items-center gap-3 px-8 py-5 bg-white/5 border border-white/10 rounded-2xl hover:bg-[#229ED9]/10 hover:border-[#229ED9]/50 transition-all group backdrop-blur-md hover:-translate-y-1" style="transition-delay: 150ms;">
                         <i data-lucide="send" class="w-6 h-6 text-neutral-400 group-hover:text-[#229ED9] transition-colors"></i>
                         <span class="font-bold">Telegram</span>
                         <i data-lucide="external-link" class="w-4 h-4 text-neutral-600 ml-1"></i>
                     </a>
 
-                    <a href="mailto:hendroabdhh@gmail.com" class="reveal flex items-center gap-3 px-8 py-5 bg-white/5 border border-white/10 rounded-2xl hover:bg-red-500/10 hover:border-red-500/50 transition-all group backdrop-blur-md hover:-translate-y-1" style="transition-delay: 400ms;">
+                    <a href="mailto:hendroabdhh@gmail.com" class="reveal flex items-center gap-3 px-8 py-5 bg-white/5 border border-white/10 rounded-2xl hover:bg-red-500/10 hover:border-red-500/50 transition-all group backdrop-blur-md hover:-translate-y-1" style="transition-delay: 200ms;">
                         <i data-lucide="mail" class="w-6 h-6 text-neutral-400 group-hover:text-red-400 transition-colors"></i>
                         <span class="font-bold">Email</span>
                         <i data-lucide="external-link" class="w-4 h-4 text-neutral-600 ml-1"></i>
@@ -228,7 +237,7 @@
                 </div>
 
                 <!-- WALLET ADDRESS BOX -->
-                <div class="reveal bg-gradient-to-b from-white/10 to-transparent p-[1px] rounded-3xl max-w-2xl mx-auto shadow-2xl" style="transition-delay: 500ms;">
+                <div class="reveal bg-gradient-to-b from-white/10 to-transparent p-[1px] rounded-3xl max-w-2xl mx-auto shadow-2xl" style="transition-delay: 300ms;">
                     <div class="bg-[#08080c] rounded-[23px] p-8 backdrop-blur-xl relative overflow-hidden">
                         <div class="absolute inset-0 bg-indigo-500/5 blur-[50px] pointer-events-none"></div>
                         <h4 class="text-sm font-bold text-indigo-400 uppercase tracking-widest mb-4">Web3 Wallet Address</h4>
@@ -260,22 +269,198 @@
 
     <!-- JAVASCRIPT LOGIC -->
     <script>
-        // Initialize Icons
-        lucide.createIcons();
+        // Memastikan eksekusi JS aman
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // Set Year
+            document.getElementById('year').textContent = new Date().getFullYear();
 
-        // Set Year
-        document.getElementById('year').textContent = new Date().getFullYear();
+            // Initialize Icons safely
+            try {
+                if (typeof lucide !== 'undefined') {
+                    lucide.createIcons();
+                }
+            } catch (e) {
+                console.log("Icons failed to load");
+            }
 
-        // Data Albums
-        const albums = {
-            portaldot: [
-                "https://raw.githubusercontent.com/hendroah/My-Portofolio-/087a2d53c65b8b8165b98387f1d8cb650033f5a4/Hend_20260509_184830_0000.png",
-                "https://raw.githubusercontent.com/hendroah/My-Portofolio-/087a2d53c65b8b8165b98387f1d8cb650033f5a4/Tak%20berjudul70_20260402205438.png",
-                "https://raw.githubusercontent.com/hendroah/My-Portofolio-/087a2d53c65b8b8165b98387f1d8cb650033f5a4/Tak%20berjudul75_20260410162711.png",
-                "https://raw.githubusercontent.com/hendroah/My-Portofolio-/087a2d53c65b8b8165b98387f1d8cb650033f5a4/Tak%20berjudul77_20260424180413.png",
-                "https://raw.githubusercontent.com/hendroah/My-Portofolio-/087a2d53c65b8b8165b98387f1d8cb650033f5a4/%E5%9F%BA%E5%9F%BA%20(1536%20x%202728%20piksel)_20260515_172344_0000.png",
-                "https://raw.githubusercontent.com/hendroah/My-Portofolio-/6b985fec319f4d5a25f63aea279c69ac29896e74/Portaldot_20260531_123602_0000.png",
-                "https://raw.githubusercontent.com/hendroah/My-Portofolio-/6b985fec319f4d5a25f63aea279c69ac29896e74/Tak%20berjudul125_20260605233218.png",
-                "https://raw.githubusercontent.com/hendroah/My-Portofolio-/6b985fec319f4d5a25f63aea279c69ac29896e74/Tak%20berjudul137_20260613223530.png",
-                "https://raw.githubusercontent.com/hendroah/My-Portofolio-/6b985fec319f4d5a25f63aea279c69ac29896e74/Untitled111_20260523194304.png",
-        
+            // Data Albums
+            const albums = {
+                portaldot: [
+                    "https://raw.githubusercontent.com/hendroah/My-Portofolio-/087a2d53c65b8b8165b98387f1d8cb650033f5a4/Hend_20260509_184830_0000.png",
+                    "https://raw.githubusercontent.com/hendroah/My-Portofolio-/087a2d53c65b8b8165b98387f1d8cb650033f5a4/Tak%20berjudul70_20260402205438.png",
+                    "https://raw.githubusercontent.com/hendroah/My-Portofolio-/087a2d53c65b8b8165b98387f1d8cb650033f5a4/Tak%20berjudul75_20260410162711.png",
+                    "https://raw.githubusercontent.com/hendroah/My-Portofolio-/087a2d53c65b8b8165b98387f1d8cb650033f5a4/Tak%20berjudul77_20260424180413.png",
+                    "https://raw.githubusercontent.com/hendroah/My-Portofolio-/087a2d53c65b8b8165b98387f1d8cb650033f5a4/%E5%9F%BA%E5%9F%BA%20(1536%20x%202728%20piksel)_20260515_172344_0000.png",
+                    "https://raw.githubusercontent.com/hendroah/My-Portofolio-/hendroah/My-Portofolio-/6b985fec319f4d5a25f63aea279c69ac29896e74/Portaldot_20260531_123602_0000.png",
+                    "https://raw.githubusercontent.com/hendroah/My-Portofolio-/6b985fec319f4d5a25f63aea279c69ac29896e74/Tak%20berjudul125_20260605233218.png",
+                    "https://raw.githubusercontent.com/hendroah/My-Portofolio-/6b985fec319f4d5a25f63aea279c69ac29896e74/Tak%20berjudul137_20260613223530.png",
+                    "https://raw.githubusercontent.com/hendroah/My-Portofolio-/6b985fec319f4d5a25f63aea279c69ac29896e74/Untitled111_20260523194304.png",
+                    "https://raw.githubusercontent.com/hendroah/My-Portofolio-/6b985fec319f4d5a25f63aea279c69ac29896e74/Which%20one_20260527_085419_0000.png",
+                    "https://raw.githubusercontent.com/hendroah/My-Portofolio-/f63011b1c28aeef2eebd763af58df55e86f11bd4/Tak%20berjudul69_20260327212438.png",
+                    "https://raw.githubusercontent.com/hendroah/My-Portofolio-/f63011b1c28aeef2eebd763af58df55e86f11bd4/Tak%20berjudul76_Dipulihkan_20260417212349.png",
+                    "https://raw.githubusercontent.com/hendroah/My-Portofolio-/f63011b1c28aeef2eebd763af58df55e86f11bd4/Tak%20berjudul87_20260501191701.png"
+                ],
+                trade: [
+                    "https://raw.githubusercontent.com/hendroah/My-Portofolio-/2c3e7bb494b3ae0e2f3744eae64f74c1c351ef9c/IMG-20260310-WA0025.jpg",
+                    "https://raw.githubusercontent.com/hendroah/My-Portofolio-/2c3e7bb494b3ae0e2f3744eae64f74c1c351ef9c/Screenshot_2026-03-11-00-59-30-167_com.tradingview.tradingviewapp-edit.jpg",
+                    "https://raw.githubusercontent.com/hendroah/My-Portofolio-/2c3e7bb494b3ae0e2f3744eae64f74c1c351ef9c/Screenshot_2026-03-09-22-58-29-917_com.tradingview.tradingviewapp.jpg",
+                    "https://raw.githubusercontent.com/hendroah/My-Portofolio-/2c3e7bb494b3ae0e2f3744eae64f74c1c351ef9c/Screenshot_2026-03-16-17-30-21-149_com.tradingview.tradingviewapp.jpg",
+                    "https://raw.githubusercontent.com/hendroah/My-Portofolio-/2c3e7bb494b3ae0e2f3744eae64f74c1c351ef9c/Screenshot_2026-03-21-22-02-07-663_com.tradingview.tradingviewapp.jpg",
+                    "https://raw.githubusercontent.com/hendroah/My-Portofolio-/7a08c74216e2e634663ddb439d10097aefdf006c/IMG-20260406-WA0023.jpg",
+                    "https://raw.githubusercontent.com/hendroah/My-Portofolio-/7a08c74216e2e634663ddb439d10097aefdf006c/Screenshot_2026-04-06-18-28-52-441_com.tradingview.tradingviewapp.jpg",
+                    "https://raw.githubusercontent.com/hendroah/My-Portofolio-/7a08c74216e2e634663ddb439d10097aefdf006c/Screenshot_2026-04-09-18-00-02-746_com.tradingview.tradingviewapp-edit.jpg",
+                    "https://raw.githubusercontent.com/hendroah/My-Portofolio-/7a08c74216e2e634663ddb439d10097aefdf006c/Screenshot_2026-04-10-17-04-05-386_com.tradingview.tradingviewapp.jpg",
+                    "https://raw.githubusercontent.com/hendroah/My-Portofolio-/42da590c79961256f88e97b0b9be3a5f067fcd51/IMG-20260109-WA0004.jpg",
+                    "https://raw.githubusercontent.com/hendroah/My-Portofolio-/42da590c79961256f88e97b0b9be3a5f067fcd51/Screenshot_2026-01-06-17-07-36-271_com.tradingview.tradingviewapp.jpg",
+                    "https://raw.githubusercontent.com/hendroah/My-Portofolio-/42da590c79961256f88e97b0b9be3a5f067fcd51/Screenshot_2026-02-20-12-09-25-181_com.tradingview.tradingviewapp.jpg",
+                    "https://raw.githubusercontent.com/hendroah/My-Portofolio-/42da590c79961256f88e97b0b9be3a5f067fcd51/Screenshot_2026-03-01-02-40-59-542_com.tradingview.tradingviewapp.jpg",
+                    "https://raw.githubusercontent.com/hendroah/My-Portofolio-/b1d95230b430504fc0cc80af3933ac2535dd871d/IMG_20260331_214134.jpg",
+                    "https://raw.githubusercontent.com/hendroah/My-Portofolio-/b1d95230b430504fc0cc80af3933ac2535dd871d/Screenshot_2026-03-22-22-36-37-889_com.tradingview.tradingviewapp.jpg",
+                    "https://raw.githubusercontent.com/hendroah/My-Portofolio-/b1d95230b430504fc0cc80af3933ac2535dd871d/Screenshot_2026-04-01-00-17-55-131_com.tradingview.tradingviewapp.jpg"
+                ],
+                random: [
+                    "https://raw.githubusercontent.com/hendroah/My-Portofolio-/2d22d7d865dd760099ec669b1d6bb241ced30b69/HEND_20251208_004445_0000.png",
+                    "https://raw.githubusercontent.com/hendroah/My-Portofolio-/2d22d7d865dd760099ec669b1d6bb241ced30b69/HEND_20260117_004234_0000.png",
+                    "https://raw.githubusercontent.com/hendroah/My-Portofolio-/2d22d7d865dd760099ec669b1d6bb241ced30b69/HEND_20260118_024858_0000.png",
+                    "https://raw.githubusercontent.com/hendroah/My-Portofolio-/2d22d7d865dd760099ec669b1d6bb241ced30b69/HEN_20251130_201451_0000.png",
+                    "https://raw.githubusercontent.com/hendroah/My-Portofolio-/2d22d7d865dd760099ec669b1d6bb241ced30b69/Teks%20paragraf%20Anda_20251117_002712_0000.png",
+                    "https://raw.githubusercontent.com/hendroah/My-Portofolio-/2f8ab8e488955dd40bd01d293c2645e691d35081/Tak%20berjudul131_20260609223500.png",
+                    "https://raw.githubusercontent.com/hendroah/My-Portofolio-/2f8ab8e488955dd40bd01d293c2645e691d35081/Tak%20berjudul96_20260509205659.png",
+                    "https://raw.githubusercontent.com/hendroah/My-Portofolio-/2f8ab8e488955dd40bd01d293c2645e691d35081/Tak%20berjudul98_20260507003540.png",
+                    "https://raw.githubusercontent.com/hendroah/My-Portofolio-/2f8ab8e488955dd40bd01d293c2645e691d35081/Untitled120_20260527125032.png",
+                    "https://raw.githubusercontent.com/hendroah/My-Portofolio-/808b3e2ede5f1d35d6c9781301f68a4ba81d32a8/Tak%20berjudul49_20260124204014.png",
+                    "https://raw.githubusercontent.com/hendroah/My-Portofolio-/808b3e2ede5f1d35d6c9781301f68a4ba81d32a8/Tak%20berjudul79_20260422210440.png",
+                    "https://raw.githubusercontent.com/hendroah/My-Portofolio-/808b3e2ede5f1d35d6c9781301f68a4ba81d32a8/Tak%20berjudul84_20260428165542.png",
+                    "https://raw.githubusercontent.com/hendroah/My-Portofolio-/808b3e2ede5f1d35d6c9781301f68a4ba81d32a8/Tak%20berjudul88_20260430231407.png"
+                ]
+            };
+
+            // Render Gallery Function
+            const galleryContainer = document.getElementById('gallery-container');
+            function renderGallery(tabName) {
+                galleryContainer.innerHTML = ''; // clear current
+                
+                albums[tabName].forEach((url, idx) => {
+                    const isLarge = idx === 0 || idx === 7;
+                    
+                    const div = document.createElement('div');
+                    div.className = `group relative rounded-2xl overflow-hidden bg-white/5 border border-white/10 cursor-pointer h-full w-full ${isLarge ? 'col-span-2 row-span-2' : ''}`;
+                    // add simple animation class instead of JS reveal
+                    div.style.animation = `fade-in-up 0.5s ease-out ${(idx % 4) * 0.1}s forwards`;
+                    div.style.opacity = '0'; // Initial state for animation
+                    
+                    div.innerHTML = `
+                        <img src="${url}" alt="Artwork" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6">
+                            <span class="text-white bg-white/10 px-6 py-2.5 rounded-full text-sm font-semibold backdrop-blur-md border border-white/20 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                                View Full
+                            </span>
+                        </div>
+                    `;
+
+                    // Add Lightbox click event
+                    div.addEventListener('click', () => openLightbox(url));
+                    galleryContainer.appendChild(div);
+                });
+            }
+
+            // Tab Switching Logic
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    tabBtns.forEach(b => {
+                        b.classList.remove('bg-indigo-500', 'text-white', 'shadow-lg');
+                        b.classList.add('text-neutral-400', 'hover:text-white', 'hover:bg-white/5');
+                    });
+                    
+                    e.target.classList.add('bg-indigo-500', 'text-white', 'shadow-lg');
+                    e.target.classList.remove('text-neutral-400', 'hover:text-white', 'hover:bg-white/5');
+                    
+                    renderGallery(e.target.getAttribute('data-tab'));
+                });
+            });
+
+            // Initialize First Tab
+            renderGallery('portaldot');
+
+            // Lightbox Logic
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const closeBtn = document.getElementById('close-lightbox');
+
+            function openLightbox(url) {
+                lightboxImg.src = url;
+                lightbox.classList.remove('hidden');
+                lightbox.classList.add('flex');
+                setTimeout(() => {
+                    lightbox.classList.remove('opacity-0');
+                    lightboxImg.classList.remove('scale-95');
+                    lightboxImg.classList.add('scale-100');
+                }, 10);
+            }
+
+            function closeLightboxFunc() {
+                lightbox.classList.add('opacity-0');
+                lightboxImg.classList.add('scale-95');
+                lightboxImg.classList.remove('scale-100');
+                setTimeout(() => {
+                    lightbox.classList.add('hidden');
+                    lightbox.classList.remove('flex');
+                    lightboxImg.src = '';
+                }, 300);
+            }
+
+            closeBtn.addEventListener('click', closeLightboxFunc);
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) closeLightboxFunc();
+            });
+
+            // Copy Wallet Logic
+            const copyBtn = document.getElementById('copy-btn');
+            const copyText = document.getElementById('copy-text');
+            const walletAddress = document.getElementById('wallet-address').innerText;
+
+            if(copyBtn) {
+                copyBtn.addEventListener('click', () => {
+                    navigator.clipboard.writeText(walletAddress).then(() => {
+                        const iconElement = document.getElementById('copy-icon');
+                        if (iconElement) {
+                            iconElement.setAttribute('data-lucide', 'check-circle-2');
+                            if (typeof lucide !== 'undefined') lucide.createIcons();
+                        }
+                        if (copyText) copyText.innerText = 'Copied!';
+                        
+                        setTimeout(() => {
+                            if (iconElement) {
+                                iconElement.setAttribute('data-lucide', 'copy');
+                                if (typeof lucide !== 'undefined') lucide.createIcons();
+                            }
+                            if (copyText) copyText.innerText = 'Copy';
+                        }, 2000);
+                    });
+                });
+            }
+
+            // Scroll Reveal Animation Safely
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal').forEach((el) => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
